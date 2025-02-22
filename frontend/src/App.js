@@ -10,11 +10,11 @@ function App() {
   const [badge, setBadge] = useState('');
 
   const sendMessage = () => {
-    fetch('http://localhost:5000/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: `Class ${classNum}, ${subject}: ${message}` })
-    })
+    fetch('https://tutorapp-backend.onrender.com/chat', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ message: `Class ${classNum}, ${subject}: ${message}` })
+})
     .then(res => res.json())
     .then(data => {
       setResponse(data.response);
@@ -27,10 +27,10 @@ function App() {
     const file = event.target.files[0];
     const formData = new FormData();
     formData.append('file', file);
-    fetch('http://localhost:5000/upload', {
-      method: 'POST',
-      body: formData
-    })
+    fetch('https://tutorapp-backend.onrender.com/upload', {
+  method: 'POST',
+  body: formData
+})
     .then(res => res.json())
     .then(data => {
       setResponse(data.response);
